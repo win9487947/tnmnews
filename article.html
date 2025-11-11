@@ -50,14 +50,14 @@
     fetch(`news/${id}.md`)
       .then(res => res.text())
       .then(md => {
-        // 移除 YAML 前言
+       
         const cleanedMd = md.replace(/^---\n[\s\S]*?\n---/, '').trim();
 
-        // 渲染 Markdown 主體
+       
         const html = marked.parse(cleanedMd);
         document.getElementById('content').innerHTML = html;
 
-        // 解析 YAML 前言（用原始 md）
+       
         const frontMatterMatch = md.match(/^---\n([\s\S]*?)\n---/);
         if (frontMatterMatch) {
           const frontMatter = Object.fromEntries(
@@ -82,7 +82,7 @@
   <p class="text-sm text-gray-400 mb-6" id="meta"></p>
   <div id="content" class="prose prose-invert prose-lg max-w-none leading-relaxed mb-8"></div>
 
-  <!-- ✅ 底部圖片區塊 -->
+
   <div class="mt-8 text-center">
     <img src="..\assets\20250515.png" alt="" class="rounded-lg shadow-lg mx-auto max-w-full h-auto">
     <p class="text-sm text-gray-400 mt-2"></p>
