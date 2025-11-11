@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>北回歸線 TNMNEWS｜官方網站</title>
+  <link rel="icon" href="../assets/tn-logo-32x32.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0B1C3D;
+      color: #FFFFFF;
+      font-family: 'Noto Sans TC', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .gradient-border {
+      border-image: linear-gradient(to right, #00C9A7, #FFD95A) 1;
+      border-width: 2px;
+      border-style: solid;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s ease infinite;
+      font-weight: 700;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .logo-animate {
+      animation: fadeIn 1.2s ease-out, breathe 6s ease-in-out infinite 1.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+      background-size: 100px 100px, 150px 150px;
+      background-position: 0 0, 50px 50px;
+      opacity: 0.2;
+      z-index: -1;
+      animation: starScroll 60s linear infinite;
+    }
+    @keyframes starScroll {
+      from { background-position: 0 0, 50px 50px; }
+      to { background-position: -1000px -1000px, -950px -950px; }
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+
+  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center">
+        <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
+        <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
+        <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
+        <li><a href="links.html" class="hover:text-[#FFD95A] transition">更多連結</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <main class="flex-grow">
+
+    <header class="min-h-screen pt-32 flex items-center justify-center text-center px-4 relative">
+      <div>
+        <img src="assets/tnm-logo.png" class="mx-auto w-32 mb-6 logo-animate" alt="TNM Logo">
+        <h1 class="gradient-text text-4xl font-bold">北回歸線 TNMNEWS</h1>
+        <h2 class="gradient-text text-2xl font-bold">自由 民主 公平 公正 中立</h2>
+        <p class="text-gray-300 max-w-xl mx-auto mb-4">
+          媒體的本質是公共責任，更是民主社會不可或缺的基石。<br>
+          我們聚焦於青少年世代的聲音，因為我們堅信：青年力量，能驅動社會進步。
+        </p>
+        <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
+                class="px-4 py-2 border-2 rounded text-white border-[#00C9A7] hover:border-[#FFD95A] mt-4 transition hover:scale-105">
+          了解更多
+        </button>
+      </div>
+    </header>
+
+
+  <section class="py-16 px-6 bg-[#112B4D]">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold gradient-text mb-10 text-center">最新新聞</h2>
+      <div id="latest-news" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+    </div>
+  </section>
+
+  <script>
+    fetch('news-index.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.querySelector('#latest-news');
+        const latestTwo = data.slice(0, 2);
+
+        latestTwo.forEach(article => {
+          const card = document.createElement('article');
+          card.className = 'gradient-border p-6 rounded shadow bg-[#0B1C3D] transition transform hover:-translate-y-1 hover:shadow-lg';
+
+          card.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">${article.title}</h3>
+            <p class="text-sm text-gray-400 mb-4">${article.date}｜${article.author || 'TNMNEWS'}</p>
+            <p class="text-gray-200">${article.summary}</p>
+            <a href="article.html?id=${article.id}" 
+               class="text-[#FFD95A] underline mt-2 inline-block transition hover:scale-105">
+               閱讀更多 →
+            </a>
+          `;
+
+          container.appendChild(card);
+        });
+
+        const moreLinkWrapper = document.createElement('div');
+        moreLinkWrapper.className = 'w-full text-center mt-6 md:col-span-2';
+        moreLinkWrapper.innerHTML = `
+          <a href="news.html" 
+             class="text-[#FFD95A] underline text-sm transition hover:scale-105">
+             更多新聞 →
+          </a>
+        `;
+        container.appendChild(moreLinkWrapper);
+      });
+  </script>
+</body>
+
+
+<section class="py-16 px-6 bg-[#112B4D]">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-[#FFD95A] mb-10 text-center">我們的活動</h2>
+
+
+    <div id="events-slider" class="flex flex-wrap justify-center gap-6 px-6">
+
+    </div>
+
+
+    <div class="mt-10 text-center">
+      <a href="events.html" class="inline-block bg-[#FFD95A] text-[#112B4D] font-semibold px-6 py-3 rounded hover:bg-[#FFC83D] transition">
+        查看所有活動
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  fetch('events-index.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.querySelector('#events-slider');
+      const latestTwo = data.slice(0, 2);
+
+      latestTwo.forEach(event => {
+        const card = document.createElement('article');
+        card.className = 'w-full max-w-[300px] md:max-w-[400px] gradient-border p-6 rounded shadow hover:shadow-lg transition bg-[#0B1C3D]';
+
+        card.innerHTML = `
+          ${event.image ? `<img src="${event.image}" alt="${event.title}" class="mb-4 rounded w-full h-48 object-cover">` : ""}
+          <h3 class="text-xl font-bold mb-2 text-white">${event.title}</h3>
+          <p class="text-sm text-gray-400 mb-4">${event.date}｜${event.organizer || 'TNMNEWS'}</p>
+          <p class="text-gray-200">${event.summary}</p>
+          <a href="event.html?id=${event.id}" class="text-[#FFD95A] underline mt-2 inline-block transition hover:scale-105">活動詳情 →</a>
+        `;
+
+        container.appendChild(card);
+      });
+    });
+</script>
+
+
+
+
+    <section id="about" class="py-16 px-6 bg-[#0B1C3D]">
+      <div class="container mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-[#FFD95A] mb-6">關於 TNM</h2>
+        <p class="text-gray-300 leading-relaxed">
+          北回歸線 TNMNEWS 是一個由青年主導的新聞媒體平台，致力於報導學生權益、教育政策、社會議題與文化觀察。我們相信新聞不只是資訊，更是公共參與的起點。TNM 以中立、公正為原則，傾聽每個世代的聲音，讓青年觀點成為社會討論的一部分。
+        </p>
+      </div>
+    </section>
+
+
+    <section class="py-8 px-4 bg-[#0B1C3D]">
+      <div class="container mx-auto text-center">
+        <img src="assets/tnmlog.png" alt="TAIWAN 拼圖視覺" class="mx-auto w-full max-w-5xl rounded shadow-lg">
+      </div>
+    </section>
+
+  </main>
+
+
+
+<footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
+    <div>
+      <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
+      <ul class="space-y-2">
+        <li><a href="index.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">主頁</a></li>
+        <li><a href="news.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">最新新聞</a></li>
+        <li><a href="events.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">所有活動</a></li>
+        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">關於青權陣線</a></li>
+        <li><a href="links.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">更多連結</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
+      <ul class="space-y-2">
+        <li>
+          <span class="text-white">北回歸線：</span>
+          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Instagram</a>、
+          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Threads</a>、
+          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Youtube</a>、
+          <a href="https://portaly.cc/tnmnews" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">傳送門</a>
+        </li>
+        <li>
+          <span class="text-white">青權陣線：</span>
+          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Instagram</a>、
+          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Threads</a>、
+          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">傳送門</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center text-gray-400 text-xs mt-8">
+    聯絡方式<br>win9487947@gmail.com<br>
+    <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">或 北回歸線 IG</a>
+  </div>
+  <div class="text-center text-gray-400 text-xs mt-8">
+    © 2025 北回歸線 TNMNEWS. 保留所有權利。
+  </div>
+</footer>
+
+</body>
+</html>

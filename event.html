@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>活動詳情｜北回歸線 TNMNEWS</title>
+
+  <link rel="icon" href="../assets/tn-logo-32x32.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      background-color: #0B1C3D;
+      color: #FFFFFF;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #00C9A7, #FFD95A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列（可複製首頁的） -->
+  <nav class="bg-[#112B4D] p-4 fixed w-full top-0 z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center">
+        <li><a href="index.html" class="hover:text-[#FFD95A]">主頁</a></li>
+        <li><a href="news.html" class="hover:text-[#FFD95A]">最新新聞</a></li>
+        <li><a href="about-tnm.html" class="hover:text-[#FFD95A]">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A]">關於青權陣線</a></li>
+        <li><a href="links.html" class="hover:text-[#FFD95A]">更多連結</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 活動內容 -->
+  <main class="pt-28 pb-16 px-6">
+    <div class="container mx-auto max-w-3xl">
+      <div id="event-content" class="prose prose-invert max-w-none"></div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="bg-[#0B1C3D] py-8 text-center text-gray-400 text-sm border-t border-[#1A2F4D]">
+    © 2025 北回歸線 TNMNEWS. 保留所有權利。
+  </footer>
+
+  <script>
+    // 取得網址參數 id
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (id) {
+      fetch(`events/${id}.md`)
+        .then(res => res.text())
+        .then(md => {
+          document.getElementById('event-content').innerHTML = marked.parse(md);
+        })
+        .catch(err => {
+          document.getElementById('event-content').innerHTML = "<p class='text-red-400'>找不到這個活動內容。</p>";
+        });
+    } else {
+      document.getElementById('event-content').innerHTML = "<p class='text-red-400'>沒有指定活動。</p>";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>更多連結｜北回歸線 TNMNEWS</title>
+
+  <link rel="icon" href="../assets/tn-logo-32x32.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0B1C3D;
+      color: #FFFFFF;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #00C9A7, #FFD95A);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 導覽列 -->
+<nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- 左邊 LOGO 文字：漸層動畫 -->
+    <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+    
+    <!-- 中間選單：靜態文字（白字 + hover 黃色） -->
+    <ul class="flex gap-6 text-sm items-center text-white">
+      <li><a href="index.html" class="hover:text-[#FFD95A]">主頁</a></li>
+      <li><a href="news.html" class="hover:text-[#FFD95A]">最新新聞</a></li>
+      <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+      <li><a href="about-tnm.html" class="hover:text-[#FFD95A]">關於北回歸線</a></li>
+      <li><a href="about-youthfront.html" class="hover:text-[#FFD95A]">關於青權陣線</a></li>
+      <!-- 右邊「更多連結」：漸層動畫 -->
+      <li><a href="links.html" class="text-sm font-bold gradient-text">更多連結</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 動態漸層文字效果 -->
+<style>
+  .gradient-text {
+    background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 8s ease infinite;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>
+
+  <!-- 頁面標題 -->
+  <main class="pt-28 pb-16 px-6 text-center">
+    <h1 class="text-3xl font-bold gradient-text mb-12">更多連結</h1>
+
+    <!-- 左右兩欄 -->
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+
+      <!-- 北回歸線 -->
+      <div class="p-6 rounded-lg bg-[#112B4D] shadow-lg text-center">
+        <img src="assets/tnm-logo.png" alt="北回歸線 Logo" class="mx-auto w-24 mb-4">
+        <h2 class="text-2xl font-bold text-[#00C9A7] mb-6">北回歸線 TNMNEWS</h2>
+        <p class="text-gray-300 mb-6">青年主導的新聞媒體平台，聚焦學生權益、教育政策與社會議題。</p>
+        <div class="flex flex-col gap-3">
+          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">Instagram</a>
+          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">Threads</a>
+          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">YouTube</a>
+          <a href="https://portaly.cc/tnmnews" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">傳送門</a>
+        </div>
+      </div>
+
+      <!-- 青權陣線 -->
+      <div class="p-6 rounded-lg bg-[#112B4D] shadow-lg text-center">
+        <img src="assets/yrf-logo.png" alt="青權陣線 Logo" class="mx-auto w-24 mb-4">
+        <h2 class="text-2xl font-bold text-[#FFD95A] mb-6">青權陣線 YRF</h2>
+        <p class="text-gray-300 mb-6">青年公共參與與世代倡議平台，推動民主與教育改革。</p>
+        <div class="flex flex-col gap-3">
+          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">Instagram</a>
+          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">Threads</a>
+          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">傳送門</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="bg-[#0B1C3D] py-8 text-center text-gray-400 text-sm border-t border-[#1A2F4D]">
+    © 2025 北回歸線 TNMNEWS. 保留所有權利。
+  </footer>
+
+</body>
+</html>

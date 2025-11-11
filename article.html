@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文章內容｜TNMNEWS</title>
+
+<link rel="icon" href="../assets/tn-logo-32x32.png" type="image/png">
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.9/dist/typography.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0B1C3D, #112B4D);
+      color: #FFFFFF;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .prose h1, .prose h2, .prose h3 {
+      color: #FFD95A;
+      font-weight: bold;
+    }
+    .prose p {
+      color: #E5E7EB;
+    }
+    .prose a {
+      color: #00C9A7;
+      text-decoration: underline;
+    }
+    .prose img {
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="px-6 py-12">
+
+  <div class="max-w-3xl mx-auto bg-[#112B4D] bg-opacity-80 rounded-lg shadow-lg p-8">
+    <h1 class="text-3xl font-bold text-[#FFD95A] mb-4" id="title">載入中...</h1>
+    <p class="text-sm text-gray-400 mb-6" id="meta"></p>
+    <div id="content" class="prose prose-invert prose-lg max-w-none leading-relaxed"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    fetch(`news/${id}.md`)
+      .then(res => res.text())
+      .then(md => {
+        // 移除 YAML 前言
+        const cleanedMd = md.replace(/^---\n[\s\S]*?\n---/, '').trim();
+
+        // 渲染 Markdown 主體
+        const html = marked.parse(cleanedMd);
+        document.getElementById('content').innerHTML = html;
+
+        // 解析 YAML 前言（用原始 md）
+        const frontMatterMatch = md.match(/^---\n([\s\S]*?)\n---/);
+        if (frontMatterMatch) {
+          const frontMatter = Object.fromEntries(
+            frontMatterMatch[1].split('\n').map(line => {
+              const [key, ...rest] = line.split(':');
+              return [key.trim(), rest.join(':').trim()];
+            })
+          );
+          document.getElementById('title').textContent = frontMatter.title || '未命名文章';
+          document.getElementById('meta').textContent = `${frontMatter.date || ''}｜${frontMatter.author || ''}`;
+        }
+      })
+      .catch(err => {
+        document.getElementById('title').textContent = '找不到文章';
+        document.getElementById('content').innerHTML =
+          '<p class="text-red-400">請確認連結是否正確，或檔案是否存在。</p>';
+      });
+  </script>
+
+<div class="max-w-3xl mx-auto bg-[#112B4D] bg-opacity-80 rounded-lg shadow-lg p-8">
+  <h1 class="text-3xl font-bold text-[#FFD95A] mb-4" id="title"></h1>
+  <p class="text-sm text-gray-400 mb-6" id="meta"></p>
+  <div id="content" class="prose prose-invert prose-lg max-w-none leading-relaxed mb-8"></div>
+
+  <!-- ✅ 底部圖片區塊 -->
+  <div class="mt-8 text-center">
+    <img src="..\assets\20250515.png" alt="" class="rounded-lg shadow-lg mx-auto max-w-full h-auto">
+    <p class="text-sm text-gray-400 mt-2"></p>
+  </div>
+</div>
+
+<div class="mt-12 text-center">
+  <a href="news.html" class="inline-block px-4 py-2 border border-[#FFD95A] text-[#FFD95A] rounded hover:bg-[#FFD95A] hover:text-[#0B1C3D] transition">
+    ← 返回
+  </a>
+</div>
+
+</body>
+</html>
