@@ -59,17 +59,42 @@
       from { background-position: 0 0, 50px 50px; }
       to { background-position: -1000px -1000px, -950px -950px; }
     }
+    /* 16:9 純 CSS 響應式裁切容器 */
+    .aspect-16-9 {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+    }
+    .aspect-16-9 img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    /* 幾何網格背景紋理特效 */
+    .bg-geometric-texture {
+      background-image: linear-gradient(rgba(26, 47, 77, 0.4) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(26, 47, 77, 0.4) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
 </head>
-
-<body class="flex flex-col min-h-screen">
-
   <!-- 我不知道你想幹嘛，但這不是你該來的地方 -->
-  <!-- 我很貼心地加上了每個程式的作用OWO (只剩自我介紹頁面中有全部而已) -->
+  <!-- 反正我已經盡力維護這網站了(雖然一堆屎山代碼) -->
   <!-- 我不覺得這程式是有甚麼好參考的，但如果對你有用就拿去吧!By.王吉米JimmyWang -->
-  <!-- I don't know what you're trying to do, but this isn't the place for you -->
- <!-- I thoughtfully added the purpose of each CODE OWO -->
- <!-- I don't think this code is worth referencing, but if it's useful to you, go ahead and take it! By. Jimmy Wang -->
+<body class="flex flex-col min-h-screen">
 
   <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
     <div class="container mx-auto flex justify-between items-center">
@@ -85,117 +110,51 @@
     </div>
   </nav>
 
-
   <main class="flex-grow">
 
-    <header class="min-h-screen pt-32 flex items-center justify-center text-center px-4 relative">
+    <header class="min-h-[50vh] pt-28 pb-8 flex items-center justify-center text-center px-4 relative">
       <div>
-        <img src="assets/tnm-logo.png" class="mx-auto w-32 mb-6 logo-animate" alt="TNM Logo">
-        <h1 class="gradient-text text-4xl font-bold">北回歸線 TNMNEWS</h1>
-        <h2 class="gradient-text text-2xl font-bold">自由 民主 公平 公正 中立</h2>
-        <p class="text-gray-300 max-w-xl mx-auto mb-4">
-          媒體的本質是公共責任，更是民主社會不可或缺的基石。<br>
+        <img src="assets/tnm-logo.png" class="mx-auto w-28 mb-4 logo-animate" alt="TNM Logo">
+        <h1 class="gradient-text text-3xl md:text-4xl font-bold">北回歸線 TNMNEWS</h1>
+        <h2 class="gradient-text text-xl md:text-2xl font-bold mt-1">自由 民主 公平 公正 中立</h2>
+        <p class="text-gray-300 max-w-xl mx-auto mb-2 mt-3 leading-relaxed text-sm md:text-base">
+          媒體的本質是公共責任，幕後更是民主社會不可或缺的基石。<br>
           我們聚焦於青少年世代的聲音，因為我們堅信：青年力量，能驅動社會進步。
         </p>
-        <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
-                class="px-4 py-2 border-2 rounded text-white border-[#00C9A7] hover:border-[#FFD95A] mt-4 transition hover:scale-105">
-          了解更多
-        </button>
       </div>
     </header>
 
+    <section id="news-section" class="py-16 px-6 bg-[#112B4D]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold gradient-text mb-10 text-center">最新新聞</h2>
+        
+        <div id="latest-news" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
 
-  <section class="py-16 px-6 bg-[#112B4D]">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold gradient-text mb-10 text-center">最新新聞</h2>
-      <div id="latest-news" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
-    </div>
-  </section>
-
-  <script>
-    fetch('news-index.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.querySelector('#latest-news');
-        const latestTwo = data.slice(0, 2);
-
-        latestTwo.forEach(article => {
-          const card = document.createElement('article');
-          card.className = 'gradient-border p-6 rounded shadow bg-[#0B1C3D] transition transform hover:-translate-y-1 hover:shadow-lg';
-
-          card.innerHTML = `
-            <h3 class="text-xl font-bold mb-2">${article.title}</h3>
-            <p class="text-sm text-gray-400 mb-4">${article.date}｜${article.author || 'TNMNEWS'}</p>
-            <p class="text-gray-200">${article.summary}</p>
-            <a href="article.html?id=${article.id}" 
-               class="text-[#FFD95A] underline mt-2 inline-block transition hover:scale-105">
-               閱讀更多 →
-            </a>
-          `;
-
-          container.appendChild(card);
-        });
-
-        const moreLinkWrapper = document.createElement('div');
-        moreLinkWrapper.className = 'w-full text-center mt-6 md:col-span-2';
-        moreLinkWrapper.innerHTML = `
-          <a href="news.html" 
-             class="text-[#FFD95A] underline text-sm transition hover:scale-105">
-             更多新聞 →
+        <div class="w-full text-center mt-10">
+          <a href="news.html" class="text-[#FFD95A] underline text-sm transition hover:text-white">
+             查看更多新聞
           </a>
-        `;
-        container.appendChild(moreLinkWrapper);
-      });
-  </script>
-</body>
+        </div>
+      </div>
+    </section>
 
+    <section class="py-16 px-6 bg-[#0B1C3D]">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-[#FFD95A] mb-10 text-center">我們的活動</h2>
 
-<section class="py-16 px-6 bg-[#112B4D]">
-  <div class="container mx-auto">
-    <h2 class="text-3xl font-bold text-[#FFD95A] mb-10 text-center">我們的活動</h2>
+        <div id="events-slider" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
 
+        <div class="mt-10 text-center">
+          <a href="events.html" class="inline-block bg-[#FFD95A] text-[#112B4D] font-semibold px-6 py-3 rounded hover:bg-[#FFC83D] transition">
+            查看所有活動
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <div id="events-slider" class="flex flex-wrap justify-center gap-6 px-6">
-
-    </div>
-
-
-    <div class="mt-10 text-center">
-      <a href="events.html" class="inline-block bg-[#FFD95A] text-[#112B4D] font-semibold px-6 py-3 rounded hover:bg-[#FFC83D] transition">
-        查看所有活動
-      </a>
-    </div>
-  </div>
-</section>
-
-<script>
-  fetch('events-index.json')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.querySelector('#events-slider');
-      const latestTwo = data.slice(0, 2);
-
-      latestTwo.forEach(event => {
-        const card = document.createElement('article');
-        card.className = 'w-full max-w-[300px] md:max-w-[400px] gradient-border p-6 rounded shadow hover:shadow-lg transition bg-[#0B1C3D]';
-
-        card.innerHTML = `
-          ${event.image ? `<img src="${event.image}" alt="${event.title}" class="mb-4 rounded w-full h-48 object-cover">` : ""}
-          <h3 class="text-xl font-bold mb-2 text-white">${event.title}</h3>
-          <p class="text-sm text-gray-400 mb-4">${event.date}｜${event.organizer || 'TNMNEWS'}</p>
-          <p class="text-gray-200">${event.summary}</p>
-          <a href="event.html?id=${event.id}" class="text-[#FFD95A] underline mt-2 inline-block transition hover:scale-105">活動詳情 →</a>
-        `;
-
-        container.appendChild(card);
-      });
-    });
-</script>
-
-
-
-
-    <section id="about" class="py-16 px-6 bg-[#0B1C3D]">
+    <section id="about" class="py-16 px-6 bg-[#112B4D]">
       <div class="container mx-auto max-w-3xl text-center">
         <h2 class="text-3xl font-bold text-[#FFD95A] mb-6">關於 TNM</h2>
         <p class="text-gray-300 leading-relaxed">
@@ -203,7 +162,6 @@
         </p>
       </div>
     </section>
-
 
     <section class="py-8 px-4 bg-[#0B1C3D]">
       <div class="container mx-auto text-center">
@@ -213,50 +171,148 @@
 
   </main>
 
-
-
-<footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
-    <div>
-      <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
-      <ul class="space-y-2">
-        <li><a href="index.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">主頁</a></li>
-        <li><a href="news.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">最新新聞</a></li>
-        <li><a href="events.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">所有活動</a></li>
-        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">關於北回歸線</a></li>
-        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">關於青權陣線</a></li>
-        <li><a href="links.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">更多連結</a></li>
-        <li><a href="links.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">其他活動</a></li>
-        
-      </ul>
+  <footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
+          <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+          <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
+          <li><a href="links.html" class="hover:text-[#FFD95A] transition">更多連結</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
+        <ul class="space-y-2">
+          <li>
+            <span class="text-white">北回歸線：</span>
+            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Youtube</a>、
+            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+          </li>
+          <li>
+            <span class="text-white">青權陣線：</span>
+            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">聯絡資訊</h3>
+        <p class="mb-2">聯絡信箱：win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] underline">透過官方 Instagram 聯絡</a></p>
+      </div>
     </div>
-    <div>
-      <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
-      <ul class="space-y-2">
-        <li>
-          <span class="text-white">北回歸線：</span>
-          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Instagram</a>、
-          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Threads</a>、
-          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Youtube</a>、
-          <a href="https://portaly.cc/tnmnews" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">傳送門</a>
-        </li>
-        <li>
-          <span class="text-white">青權陣線：</span>
-          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Instagram</a>、
-          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">Threads</a>、
-          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">傳送門</a>
-        </li>
-      </ul>
+    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]">
+      © 2026 北回歸線 TNMNEWS. 保留所有權利。
     </div>
-  </div>
-  <div class="text-center text-gray-400 text-xs mt-8">
-    聯絡方式<br>win9487947@gmail.com<br>
-    <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">或 北回歸線 IG</a>
-  </div>
-  <div class="text-center text-gray-400 text-xs mt-8">
-    © 2025 北回歸線 TNMNEWS. 保留所有權利。
-  </div>
-</footer>
+  </footer>
 
+  <script>
+    // 1. 動態抓取最新 3 篇新聞
+    fetch('news-index.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.querySelector('#latest-news');
+        const latestThree = data.slice(0, 3);
+
+        latestThree.forEach(article => {
+          const card = document.createElement('div');
+          card.className = 'bg-[#0B1C3D] border border-[#1A2F4D] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition flex flex-col group';
+          
+          const category = article.category || '焦點新聞';
+          
+          let imageAreaHtml = '';
+          if (article.thumbnail) {
+            imageAreaHtml = `
+              <div class="aspect-16-9 bg-[#112B4D]">
+                <img src="${article.thumbnail}" alt="新聞縮圖" class="group-hover:scale-105 transition duration-500">
+                <span class="absolute top-3 left-3 bg-[#00C9A7] text-[#0B1C3D] text-xs font-bold px-2 py-1 rounded">
+                  ${category}
+                </span>
+              </div>
+            `;
+          } else {
+            imageAreaHtml = `
+              <div class="aspect-16-9 bg-gradient-to-br from-[#112B4D] via-[#0B1C3D] to-[#1A2F4D] bg-geometric-texture flex flex-col items-center justify-center border-b border-[#1A2F4D] relative p-4 text-center">
+                <span class="text-[#00C9A7] font-black tracking-widest text-xl font-mono mb-1">TNMNEWS</span>
+                <span class="text-gray-400 text-xs tracking-wider">目前尚無圖片</span>
+                <span class="absolute top-3 left-3 bg-[#00C9A7] text-[#0B1C3D] text-xs font-bold px-2 py-1 rounded">
+                  ${category}
+                </span>
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            ${imageAreaHtml}
+            <div class="p-5 flex flex-col flex-1">
+              <div class="text-xs text-gray-400 mb-2">發布日期：${article.date} ｜ 責任編輯：${article.author || 'TNM編輯部'}</div>
+              <h3 class="text-lg font-bold text-[#FFD95A] line-clamp-2 mb-2 group-hover:text-white transition-colors">${article.title}</h3>
+              <p class="text-sm text-gray-300 line-clamp-3 flex-1 mb-4">${article.summary}</p>
+              <div class="pt-2 mt-auto">
+                <a href="article.html?id=${article.id}" class="text-sm font-semibold text-[#00C9A7] hover:text-[#FFD95A] transition-colors underline">
+                  閱讀全文 →
+                </a>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error("新聞數據讀取錯誤:", err));
+
+    // 2. 動態抓取最新 3 篇活動
+    fetch('events-index.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.querySelector('#events-slider');
+        const latestThree = data.slice(0, 3);
+
+        latestThree.forEach(event => {
+          const card = document.createElement('div');
+          card.className = 'bg-[#112B4D] border border-[#1A2F4D] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition flex flex-col group';
+          
+          const eventImgSrc = event.image || event.thumbnail;
+          
+          let eventImageHtml = '';
+          if (eventImgSrc) {
+            eventImageHtml = `
+              <div class="aspect-16-9 bg-[#0B1C3D]">
+                <img src="${eventImgSrc}" alt="${event.title}" class="group-hover:scale-105 transition duration-500">
+              </div>
+            `;
+          } else {
+            eventImageHtml = `
+              <div class="aspect-16-9 bg-gradient-to-br from-[#0B1C3D] to-[#112B4D] bg-geometric-texture flex flex-col items-center justify-center border-b border-[#1A2F4D] p-4 text-center">
+                <span class="text-white font-black tracking-widest text-xl font-mono mb-1">TNMNEWS</span>
+                <span class="text-gray-400 text-xs tracking-wider">目前尚無圖片</span>
+              </div>
+            `;
+          }
+
+          card.innerHTML = `
+            ${eventImageHtml}
+            <div class="p-5 flex flex-col flex-1">
+              <div class="text-xs text-gray-400 mb-2">活動日期：${event.date} ｜ 主辦單位：${event.organizer || 'TNMNEWS'}</div>
+              <h3 class="text-lg font-bold text-white line-clamp-2 mb-2 group-hover:text-[#FFD95A] transition-colors">${event.title}</h3>
+              <p class="text-sm text-gray-300 line-clamp-3 flex-1 mb-4">${event.summary}</p>
+              <div class="pt-2 mt-auto">
+                <a href="event.html?id=${event.id}" class="text-sm font-semibold text-[#FFD95A] hover:underline">
+                  活動詳情 →
+                </a>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => console.error("活動數據讀取錯誤:", err));
+  </script>
 </body>
 </html>

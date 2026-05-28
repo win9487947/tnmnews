@@ -3,25 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>文章內容｜TNMNEWS</title>
-
-  <!-- SwG Basic Script -->
-<script async type="application/javascript"
-        src="https://news.google.com/swg/js/v1/swg-basic.js"></script>
-<script>
-  (self.SWG_BASIC = self.SWG_BASIC || []).push( basicSubscriptions => {
-    basicSubscriptions.init({
-      type: "NewsArticle",
-      isPartOfType: ["Product"],
-      isPartOfProductId: "CAow_ObDDA:openaccess",
-      clientOptions: { theme: "light", lang: "zh-TW" },
-    });
-  });
-</script>
-</head>
-
+  <title>新聞內文｜北回歸線 TNMNEWS</title>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/tn-logo-32x32.png">
-
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.9/dist/typography.min.css" rel="stylesheet">
   <style>
@@ -30,77 +13,236 @@
       color: #FFFFFF;
       font-family: 'Noto Sans TC', sans-serif;
     }
+    .gradient-text {
+      background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s ease infinite;
+      font-weight: 700; 
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* 16:9 響應式大圖容器，防圖片拉伸變形 */
+    .aspect-16-9 {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+    }
+    .aspect-16-9 img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    /* 蓋掉 Typography 內建的明亮樣式，符合全站深藍調視覺 */
     .prose h1, .prose h2, .prose h3 {
-      color: #FFD95A;
+      color: #FFD95A !important;
       font-weight: bold;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
     .prose p {
-      color: #E5E7EB;
+      color: #E5E7EB !important;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
     }
     .prose a {
-      color: #00C9A7;
+      color: #00C9A7 !important;
       text-decoration: underline;
     }
-    .prose img {
-      border-radius: 0.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+    .prose strong {
+      color: #FFD95A !important;
+    }
+    .prose blockquote {
+      border-left-color: #00C9A7 !important;
+      color: #9CA3AF !important;
+      background-color: rgba(11, 28, 61, 0.6);
+      padding: 1rem;
+      border-radius: 0.375rem;
     }
   </style>
 </head>
-<body class="px-6 py-12">
+<body class="flex flex-col min-h-screen pt-24 px-4">
 
-  <div class="max-w-3xl mx-auto bg-[#112B4D] bg-opacity-80 rounded-lg shadow-lg p-8">
-    <h1 class="text-3xl font-bold text-[#FFD95A] mb-4" id="title">新聞文章</h1>
-    <p class="text-sm text-gray-400 mb-6" id="meta"></p>
-    <div id="content" class="prose prose-invert prose-lg max-w-none leading-relaxed mb-8"></div>
-
-    <div class="mt-8 text-center">
-      <img src="./assets/20250515.png" alt="文章圖片" class="rounded-lg shadow-lg mx-auto max-w-full h-auto">
-      <p class="text-sm text-gray-400 mt-2"></p>
+  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center text-white">
+        <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
+        <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
+        <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
+        <li><a href="links.html" class="hover:text-[#FFD95A] transition">更多連結</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
-  <div class="mt-12 text-center">
-    <a href="news.html" class="inline-block px-4 py-2 border border-[#FFD95A] text-[#FFD95A] rounded hover:bg-[#FFD95A] hover:text-[#0B1C3D] transition">
-      ← 返回
-    </a>
-  </div>
+  <main class="max-w-3xl w-full mx-auto flex-grow mt-6">
+    
+    <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-6" id="title">載入中...</h1>
+
+    <div id="image-wrapper" class="w-full rounded-lg overflow-hidden border border-[#1A2F4D] shadow-lg mb-4 bg-[#0B1C3D] hidden">
+      <div class="aspect-16-9">
+        <img id="article-image" src="" alt="新聞精選圖片">
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between text-sm text-gray-400 border-b border-[#1A2F4D] pb-4 mb-6">
+      <div id="meta">
+        </div>
+      <div class="flex gap-4 text-xs mt-2 md:mt-0">
+        <a id="link-instagram" href="#" target="_blank" class="text-[#00C9A7] hover:underline hidden">Instagram 報導</a>
+        <a id="link-threads" href="#" target="_blank" class="text-[#00C9A7] hover:underline hidden">Threads 討論</a>
+      </div>
+    </div>
+
+    <div id="content" class="prose prose-invert prose-lg max-w-none leading-relaxed text-justify mb-12"></div>
+
+    <section class="mb-12 border-t border-[#1A2F4D] pt-8">
+      <h3 class="text-xl font-bold text-[#FFD95A] mb-6">相關新聞</h3>
+      <div id="related-posts" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        </div>
+    </section>
+
+    <div class="w-full mb-8">
+      <img src="./assets/20250515.png" alt="北回歸線 TNMNEWS" class="w-full h-auto rounded border border-[#1A2F4D] shadow-lg mx-auto">
+    </div>
+
+    <div class="text-center mb-16">
+      <a href="news.html" class="inline-block px-6 py-2 border border-[#FFD95A] text-[#FFD95A] rounded hover:bg-[#FFD95A] hover:text-[#0B1C3D] transition text-sm font-semibold">
+        返回最新新聞
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D] text-sm text-gray-300 w-full">
+    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
+          <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+          <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
+          <li><a href="links.html" class="hover:text-[#FFD95A] transition">更多連結</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
+        <ul class="space-y-2">
+          <li>
+            <span class="text-white">北回歸線：</span>
+            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] transition">Instagram</a>、
+            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="hover:text-[#FFD95A] transition">Threads</a>、
+            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="hover:text-[#FFD95A] transition">Youtube</a>、
+            <a href="https://portaly.cc/tnmnews" target="_blank" class="hover:text-[#FFD95A] transition">傳送門</a>
+          </li>
+          <li>
+            <span class="text-white">青權陣線：</span>
+            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="hover:text-[#FFD95A] transition">Instagram</a>、
+            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="hover:text-[#FFD95A] transition">Threads</a>、
+            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="hover:text-[#FFD95A] transition">傳送門</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">聯絡資訊</h3>
+        <p class="mb-2">聯絡信箱：win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] underline">透過官方 Instagram 聯絡</a></p>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]">
+      © 2026 北回歸線 TNMNEWS. 保留所有權利。
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
-    fetch(`news/${id}.md`)
-      .then(res => res.text())
-      .then(md => {
-     
-        const cleanedMd = md.replace(/^---\n[\s\S]*?\n---/, '').trim();
+    // 平行 Fetch 索引與 Markdown 檔案，達成極致速度與向下相容
+    Promise.all([
+      fetch('news-index.json').then(res => res.json()),
+      fetch(`news/${filename_fallback(id)}.md`).then(res => res.text())
+    ])
+    .then(([indexData, mdText]) => {
+      
+      // 1. 移除可能存在的 Markdown 頂部 Front Matter，並將內文精準渲染
+      const cleanedMd = mdText.replace(/^---\n[\s\S]*?\n---/, '').trim();
+      document.getElementById('content').innerHTML = marked.parse(cleanedMd);
 
-    
-        const html = marked.parse(cleanedMd);
-        document.getElementById('content').innerHTML = html;
-
-       
-        const frontMatterMatch = md.match(/^---\n([\s\S]*?)\n---/);
-        if (frontMatterMatch) {
-          const frontMatter = Object.fromEntries(
-            frontMatterMatch[1].split('\n').map(line => {
-              const [key, ...rest] = line.split(':');
-              return [key.trim(), rest.join(':').trim()];
-            })
-          );
-          document.getElementById('title').textContent = frontMatter.title || '未命名文章';
-          document.getElementById('meta').textContent = `${frontMatter.date || ''}｜${frontMatter.author || ''}`;
+      // 2. 從自動化的 JSON 資料庫地圖中，精確查找本篇文章的後設資料
+      const currentNews = indexData.find(item => item.id === id);
+      
+      if (currentNews) {
+        document.getElementById('title').textContent = currentNews.title;
+        document.getElementById('meta').textContent = `發布時間：${currentNews.date} ｜ 責任編輯：${currentNews.author || 'TNM編輯部'}`;
+        
+        // 3. 16:9 縮圖顯示邏輯（若舊新聞在 JSON 中無自訂縮圖，可選擇性保持隱藏，或套用統一橫幅）
+        if (currentNews.thumbnail) {
+          document.getElementById('article-image').src = currentNews.thumbnail;
+          document.getElementById('image-wrapper').classList.remove('hidden');
         }
-      })
-      .catch(err => {
-        document.getElementById('title').textContent = '找不到文章';
-        document.getElementById('content').innerHTML =
-          '<p class="text-red-400">請確認連結是否正確，或檔案是否存在。</p>';
-      });
+
+        // 4. 新聞專屬社群貼文衍生連結對齊
+        const igLink = document.getElementById('link-instagram');
+        const threadsLink = document.getElementById('link-threads');
+        
+        if (currentNews.instagram_url) {
+          igLink.href = currentNews.instagram_url;
+          igLink.classList.remove('hidden');
+        }
+        if (currentNews.threads_url) {
+          threadsLink.href = currentNews.threads_url;
+          threadsLink.classList.remove('hidden');
+        }
+
+        // 5. 相關新聞智庫交叉比對推薦（依據 tags 權重）
+        const relatedContainer = document.getElementById('related-posts');
+        relatedContainer.innerHTML = ''; // 清空預設靜態卡片
+        
+        const currentTags = currentNews.tags || [];
+        let relatedList = indexData.filter(item => item.id !== id && (item.tags || []).some(t => currentTags.includes(t)));
+        
+        // 若具備相同標籤的文章不足，則自動使用最新發布的新聞遞補，確保畫面不開天窗
+        if (relatedList.length < 2) {
+          const fillers = indexData.filter(item => item.id !== id && !relatedList.some(r => r.id === item.id));
+          relatedList = relatedList.concat(fillers).slice(0, 2);
+        } else {
+          relatedList = relatedList.slice(0, 2);
+        }
+
+        relatedList.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'bg-[#112B4D] rounded p-4 border border-[#1A2F4D] flex flex-col justify-between hover:border-[#00C9A7] transition';
+          card.innerHTML = `
+            <h4 class="text-base font-bold text-white line-clamp-2">
+              <a href="article.html?id=${item.id}" class="hover:text-[#FFD95A] transition">${item.title}</a>
+            </h4>
+            <span class="text-xs text-gray-400 mt-2">發布日期：${item.date} ｜ ${item.category || '焦點新聞'}</span>
+          `;
+          relatedContainer.appendChild(card);
+        });
+      }
+    })
+    .catch(err => {
+      document.getElementById('title').textContent = '找不到文章';
+      document.getElementById('content').innerHTML = '<p class="text-red-400 text-center py-8">請確認連結是否正確，或檔案是否存在。</p>';
+      console.error("新聞內文解析錯誤:", err);
+    });
+
+    // 檔名解碼安全機制
+    function filename_fallback(urlId) {
+      return urlId ? decodeURIComponent(urlId) : 'error';
+    }
   </script>
 
 </body>

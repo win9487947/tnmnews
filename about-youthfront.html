@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>關於青權陣線｜TNMNEWS</title>
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/yrf-logo-32x32.png">
-
+  <title>關於青權陣線｜北回歸線 TNMNEWS</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/yrf-logo-32x32.png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
@@ -15,127 +14,128 @@
       scroll-behavior: smooth;
     }
     .gradient-text {
-      background: linear-gradient(to right, #00C9A7, #FFD95A);
+      background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s ease infinite;
+      font-weight: 700; 
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-<!-- 你真的翻到這裡了嗎？這只是介紹而已 -->
-<!-- 我盡量寫得很正式，但其實我知道你只是在偷看原始碼 OWO -->
-<!-- 如果你覺得這有用，那就拿去吧，不過我覺得沒什麼好參考的XD -->
-<!-- You actually scrolled here? This is just TNM’s intro -->
-<!-- I tried to make it formal, but I know you’re just peeking at the source OWO -->
-<!-- If you find this useful, take it—but honestly, not much to reference XD -->
-  
-
-<nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
-  <div class="container mx-auto flex justify-between items-center">
-    
-    <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
-    
-    
-    <ul class="flex gap-6 text-sm items-center">
-      <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">主頁</a></li>
-      <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">最新新聞</a></li>
-      <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
-      <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">關於北回歸線</a></li>
-      
-      <li><a href="about-youthfront.html" class="gradient-text font-bold transition inline-block">關於青權陣線</a></li>
-      <li><a href="links.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">更多連結</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- 動態漸層文字效果，我研究蠻久的，不嫌棄你就拿走吧 -->
-<style>
-  .gradient-text {
-    background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 8s ease infinite;
-    font-weight: 700; 
-  }
-
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-</style>
-
- 
-  <section class="pt-24 pb-6 bg-[#0B1C3D]">
-    <div class="container mx-auto text-center">
-      <img src="assets/yrflog.png" alt="青權陣線橫幅" class="mx-auto w-full max-w-6xl rounded shadow-lg">
-      <p class="text-gray-400 text-sm mt-4">青少年權益．教育改革．性別平等．勞動權．校園民主</p>
+  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center">
+        <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block text-white">主頁</a></li>
+        <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block text-white">最新新聞</a></li>
+        <li><a href="events.html" class="hover:text-[#FFD95A] transition text-white">所有活動</a></li>
+        <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block text-white">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="gradient-text font-bold transition inline-block">關於青權陣線</a></li>
+        <li><a href="links.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block text-white">更多連結</a></li>
+      </ul>
     </div>
-  </section>
+  </nav>
 
- 
-  <header class="pb-12 text-center">
-    <h1 class="text-4xl font-bold gradient-text mb-4">關於青權陣線</h1>
-    <p class="text-gray-300 max-w-2xl mx-auto">
-      青權陣線是 TNMNEWS 旗下專案單位，專注於學生權益、教育改革與青年公共參與，致力讓學生的聲音被聽見、被理解、被記錄。
-    </p>
-  </header>
+  <main class="flex-grow pt-20">
 
+    <section class="py-12 flex flex-col justify-center items-center bg-[#0B1C3D]">
+      <div class="w-full max-w-5xl px-6">
+        <div class="rounded-2xl overflow-hidden border border-[#1A2F4D] shadow-2xl bg-[#112B4D]">
+          <img src="assets/yrflog.png" alt="青權陣線官方橫幅" class="w-full h-auto object-cover opacity-95">
+        </div>
+        <p class="text-gray-400 text-center text-xs md:text-sm mt-4 font-medium tracking-wide">
+          青少年權益 ． 教育改革 ． 性別平等 ． 勞動權 ． 校園民主
+        </p>
+      </div>
+    </section>
 
-  <section class="px-6 py-12 bg-[#0B1C3D]">
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl font-bold text-[#FFD95A] mb-6">我們的宗旨</h2>
-      <p class="text-gray-300 leading-relaxed space-y-4">
-        青權陣線由 TNMNEWS 創辦人團隊發起，初衷是提供學生與學權團體一個能夠發聲的平台。<br>
-        我們相信：<span class="text-[#00C9A7] font-semibold">學生不是被動的受教者，而是積極的公共參與者</span>。<br>
-        青權陣線關注教育制度、校園民主、學生自治、教師權益與教育政策，並透過新聞報導、行動倡議與政策監督，推動更公平、更開放的教育環境。
+    <header class="pb-12 text-center px-4">
+      <h1 class="text-4xl font-bold gradient-text mb-4">關於青權陣線</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto leading-relaxed text-sm md:text-base text-justify md:text-center">
+        青權陣線是 TNMNEWS 旗下專案單位，專注於學生權益、教育改革與青年公共參與，致力讓學生的聲音被聽見、被理解、被記錄。
       </p>
+    </header>
 
-      
-      <div class="mt-8 text-center">
-        <img src="assets/yrf-logo.png" alt="青權陣線 Logo" class="mx-auto w-40 rounded-full shadow-md">
-      </div>
-    </div>
-  </section>
+    <section class="px-6 py-16 bg-[#112B4D] bg-opacity-40 border-t border-b border-[#1A2F4D]">
+      <div class="container mx-auto max-w-3xl text-center md:text-left">
+        <h2 class="text-3xl font-bold text-[#FFD95A] mb-6 text-center md:text-left border-b border-[#1A2F4D] pb-2">我們的宗旨</h2>
+        <div class="text-gray-300 leading-relaxed space-y-6 text-justify text-sm md:text-base">
+          <p>
+            青權陣線由 TNMNEWS 創辦人團隊發起，初衷是提供學生與學權團體一個能夠發聲的平台。
+          </p>
+          <p class="border-l-4 border-[#00C9A7] pl-4 font-medium text-white my-4 bg-[#0B1C3D] bg-opacity-40 py-2 rounded-r">
+            我們相信：學生不是被動的受教者，而是積極的公共參與者。
+          </p>
+          <p>
+            青權陣線關注教育制度、校園民主、學生自治、教師權益與教育政策，並透過新聞報導、行動倡議與政策監督，推動更公平、更開放的教育環境。
+          </p>
+        </div>
 
- 
-  <section class="px-6 py-12 bg-[#112B4D]">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-[#00C9A7] mb-10 text-center">我們關注的議題</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
-        <div class="p-6 border border-[#00C9A7] rounded hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-[#FFD95A] mb-2">學生權益與校園民主</h3>
-          <p>推動學生自治、反對校園不當管教、監督學生會制度與選舉。</p>
-        </div>
-        <div class="p-6 border border-[#00C9A7] rounded hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-[#FFD95A] mb-2">教育政策與制度改革</h3>
-          <p>關注教育部政策、課綱修訂、手機禁令、升學制度與教育資源分配。</p>
-        </div>
-        <div class="p-6 border border-[#00C9A7] rounded hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-[#FFD95A] mb-2">青年公共參與</h3>
-          <p>鼓勵學生參與社會議題、培養公民意識、推動青年參政與政策倡議。</p>
-        </div>
-        <div class="p-6 border border-[#00C9A7] rounded hover:scale-105 transition">
-          <h3 class="text-xl font-bold text-[#FFD95A] mb-2">媒體教育與培訓</h3>
-          <p>定期舉辦新聞倫理、媒體識讀、採訪技巧等培訓課程，提升學生媒體素養。</p>
+        <div class="mt-10 text-center">
+          <img src="assets/yrf-logo.png" alt="青權陣線識別標誌" class="mx-auto w-36 h-36 rounded-full border-2 border-[#1A2F4D] shadow-xl">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
- 
- <section class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
+    <section class="px-6 py-16 bg-[#0B1C3D]">
+      <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold text-[#00C9A7] mb-2 text-center">我們關注的議題</h2>
+        <p class="text-gray-400 text-sm text-center mb-10">立足青年視角，深耕四大核心範疇，促進理性公共對話。</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="p-6 bg-[#112B4D] border border-[#1A2F4D] rounded-xl hover:scale-105 transition shadow-md flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-[#FFD95A] mb-3">學生權益與校園民主</h3>
+              <p class="text-gray-300 text-sm leading-relaxed text-justify">推動學生自治、反對校園不當管教、監督學生會制度與選舉。</p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#112B4D] border border-[#1A2F4D] rounded-xl hover:scale-105 transition shadow-md flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-[#FFD95A] mb-3">教育政策與制度改革</h3>
+              <p class="text-gray-300 text-sm leading-relaxed text-justify">關注教育部政策、課綱修訂、手機禁令、升學制度與教育資源分配。</p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#112B4D] border border-[#1A2F4D] rounded-xl hover:scale-105 transition shadow-md flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-[#FFD95A] mb-3">青年公共參與</h3>
+              <p class="text-gray-300 text-sm leading-relaxed text-justify">鼓勵學生參與社會議題、培養公民意識、推動青年參政與政策倡議。</p>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#112B4D] border border-[#1A2F4D] rounded-xl hover:scale-105 transition shadow-md flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-[#FFD95A] mb-3">媒體教育與培訓</h3>
+              <p class="text-gray-300 text-sm leading-relaxed text-justify">定期舉辦新聞倫理、媒體識讀、採訪技巧等培訓課程，提升學生媒體素養。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
       <div>
         <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
         <ul class="space-y-2">
-          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">主頁</a></li>
-          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">最新新聞</a></li>
-          <li><a href="events.html" class="hover:text-[#FFD95A] hover:scale-105 transition inline-block">所有活動</a></li>
-          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">關於北回歸線</a></li>
-          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">關於青權陣線</a></li>
+          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">主頁</a></li>
+          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition inline-block">所有活動</a></li>
+          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於青權陣線</a></li>
         </ul>
       </div>
       <div>
@@ -143,27 +143,29 @@
         <ul class="space-y-2">
           <li>
             <span class="text-white">北回歸線：</span>
-            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">Instagram</a>、
-            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">Threads</a>、
-            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">Youtube</a>、
-            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">傳送門</a>
+            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Youtube</a>、
+            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
           </li>
           <li>
             <span class="text-white">青權陣線：</span>
-            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">Instagram</a>、
-            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">Threads</a>、
-            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">傳送門</a>
+            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
           </li>
         </ul>
       </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">聯絡資訊</h3>
+        <p class="mb-2">聯絡信箱：win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] underline">透過官方 Instagram 聯絡</a></p>
+      </div>
     </div>
-    <div class="text-center text-gray-400 text-xs mt-8">
-      聯絡方式<br>win9487947@gmail.com<br><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">或  北回歸線IG</a>
+    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]">
+      © 2026 北回歸線 TNMNEWS. 保留所有權利。
     </div>
-    <div class="text-center text-gray-400 text-xs mt-8">
-      © 2025 北回歸線 TNMNEWS. 保留所有權利。
-    </div>
-  </section>
+  </footer>
 
 </body>
 </html>

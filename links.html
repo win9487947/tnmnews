@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>更多連結｜北回歸線 TNMNEWS</title>
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/tn-logo-32x32.png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -12,94 +11,122 @@
       background-color: #0B1C3D;
       color: #FFFFFF;
       font-family: 'Noto Sans TC', sans-serif;
+      scroll-behavior: smooth;
     }
     .gradient-text {
-      background: linear-gradient(to right, #00C9A7, #FFD95A);
+      background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s ease infinite;
+      font-weight: 700;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
-<body>
-<!-- 這裡只有連結，沒有秘密 -->
-<!-- 不過既然你來了，我就送你一個小彩蛋 OWO -->
-<!-- 程式碼很普通，但你能看到這裡就代表你很認真 -->
-<!-- Just links here, no secrets -->
-<!-- But since you came, here’s a little Easter egg OWO -->
-<!-- The code is ordinary, but reaching here means you’re dedicated -->
+<body class="flex flex-col min-h-screen">
+  <!-- 我不知道你想幹嘛，但這不是你該來的地方 -->
+  <!-- 反正我已經盡力維護這網站了(雖然一堆屎山代碼) -->
+  <!-- 我不覺得這程式是有甚麼好參考的，但如果對你有用就拿去吧!By.王吉米JimmyWang -->
+  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center text-white">
+        <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
+        <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
+        <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
+        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
+        <li><a href="links.html" class="gradient-text font-bold transition">更多連結</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
-  <div class="container mx-auto flex justify-between items-center">
-   
-    <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
-    
-   
-    <ul class="flex gap-6 text-sm items-center text-white">
-      <li><a href="index.html" class="hover:text-[#FFD95A]">主頁</a></li>
-      <li><a href="news.html" class="hover:text-[#FFD95A]">最新新聞</a></li>
-      <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
-      <li><a href="about-tnm.html" class="hover:text-[#FFD95A]">關於北回歸線</a></li>
-      <li><a href="about-youthfront.html" class="hover:text-[#FFD95A]">關於青權陣線</a></li>
-      <li><a href="links.html" class="text-sm font-bold gradient-text">更多連結</a></li>
-    </ul>
-  </div>
-</nav>
+  <main class="flex-grow pt-32 pb-16 px-6">
+    <header class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-black gradient-text mb-2">更多連結</h1>
+      <p class="text-gray-400 text-xs md:text-sm">歡迎透過以下官方渠道與社群平台與我們取得聯繫</p>
+    </header>
 
-<!-- 動態漸層文字效果，我研究蠻久的，不嫌棄你就拿走吧 -->
-<style>
-  .gradient-text {
-    background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 8s ease infinite;
-  }
+    <div class="container mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
 
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-</style>
-
-
-  <main class="pt-28 pb-16 px-6 text-center">
-    <h1 class="text-3xl font-bold gradient-text mb-12">更多連結</h1>
-
- 
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-
- 
-      <div class="p-6 rounded-lg bg-[#112B4D] shadow-lg text-center">
-        <img src="assets/tnm-logo.png" alt="北回歸線 Logo" class="mx-auto w-24 mb-4">
-        <h2 class="text-2xl font-bold text-[#00C9A7] mb-6">北回歸線 TNMNEWS</h2>
-        <p class="text-gray-300 mb-6">青年主導的新聞媒體平台，聚焦學生權益、教育政策與社會議題。</p>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">Instagram</a>
-          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">Threads</a>
-          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">YouTube</a>
-          <a href="https://portaly.cc/tnmnews" target="_blank" class="px-4 py-2 rounded bg-[#00C9A7] text-white hover:bg-[#FFD95A] transition">傳送門</a>
+      <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-50 border border-[#1A2F4D] shadow-lg text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300">
+        <div>
+          <img src="assets/tnm-logo.png" alt="北回歸線 Logo" class="mx-auto w-24 h-24 mb-4 object-contain">
+          <h2 class="text-2xl font-bold text-[#00C9A7] mb-4">北回歸線 TNMNEWS</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2">
+            青年主導的新聞媒體平台，聚焦學生權益、教育政策與社會議題。
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
+          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">Instagram</a>
+          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">Threads</a>
+          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">YouTube</a>
+          <a href="https://portaly.cc/tnmnews" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">傳送門</a>
         </div>
       </div>
 
-
-      <div class="p-6 rounded-lg bg-[#112B4D] shadow-lg text-center">
-        <img src="assets/yrf-logo.png" alt="青權陣線 Logo" class="mx-auto w-24 mb-4">
-        <h2 class="text-2xl font-bold text-[#FFD95A] mb-6">青權陣線 YRF</h2>
-        <p class="text-gray-300 mb-6">青年公共參與與世代倡議平台，推動民主與教育改革。</p>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">Instagram</a>
-          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">Threads</a>
-          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="px-4 py-2 rounded bg-[#FFD95A] text-white hover:bg-[#00C9A7] transition">傳送門</a>
+      <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-50 border border-[#1A2F4D] shadow-lg text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300">
+        <div>
+          <img src="assets/yrf-logo.png" alt="青權陣線 Logo" class="mx-auto w-24 h-24 mb-4 object-contain rounded-full">
+          <h2 class="text-2xl font-bold text-[#FFD95A] mb-4">青權陣線 YRF</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2">
+            青年公共參與與世代倡議平台，推動民主與教育改革。
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
+          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">Instagram</a>
+          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">Threads</a>
+          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">傳送門</a>
         </div>
       </div>
 
     </div>
   </main>
 
-
-  <footer class="bg-[#0B1C3D] py-8 text-center text-gray-400 text-sm border-t border-[#1A2F4D]">
-    © 2025 北回歸線 TNMNEWS. 保留所有權利。
+  <footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">主頁</a></li>
+          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition inline-block">所有活動</a></li>
+          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於青權陣線</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
+        <ul class="space-y-2">
+          <li>
+            <span class="text-white">北回歸線：</span>
+            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Youtube</a>、
+            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+          </li>
+          <li>
+            <span class="text-white">青權陣線：</span>
+            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4">聯絡資訊</h3>
+        <p class="mb-2">聯絡信箱：win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] underline">透過官方 Instagram 聯絡</a></p>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]">
+      © 2026 北回歸線 TNMNEWS. 保留所有權利。
+    </div>
   </footer>
 
 </body>

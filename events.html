@@ -13,19 +13,21 @@
       font-family: 'Noto Sans TC', sans-serif;
     }
     .gradient-text {
-      background: linear-gradient(to right, #00C9A7, #FFD95A);
+      background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s ease infinite;
+      font-weight: 700;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-<!-- 這裡是活動頁面，不是秘密基地 -->
-<!-- 我很貼心地幫你整理活動，但你卻在看註解 OWO -->
-<!-- 如果你真的需要這段程式碼，那就祝你好運 -->
-<!-- This is the events page, not a secret base -->
-<!-- I carefully organized the events, but you’re reading comments OWO -->
-<!-- If you really need this code, well… good luck -->
 
 <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
   <div class="container mx-auto flex justify-between items-center">
@@ -41,78 +43,39 @@
   </div>
 </nav>
 
-<!-- 動態漸層文字效果，我研究蠻久的，不嫌棄你就拿走吧 -->
-<style>
-  .gradient-text {
-    background: linear-gradient(90deg, #00C9A7, #FFD95A, #FF6CAB, #00C9A7);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 8s ease infinite;
-    font-weight: 700;
-  }
-
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-</style>
-
-
 <header class="pt-32 pb-8 text-center">
   <h1 class="text-4xl font-bold gradient-text mb-2">所有活動</h1>
   <p class="text-gray-400 text-sm">TNMNEWS 記錄我們的行動與參與</p>
 </header>
 
-
 <section class="px-6 py-12 bg-[#112B4D]">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" id="events-list">
-    
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="events-list">
+    <!-- 活動卡片由 JS 動態載入 -->
   </div>
 </section>
-
 
 <section class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
   <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
     <div>
       <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
       <ul class="space-y-2">
-        <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">主頁</a></li>
-        <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">最新新聞</a></li>
-        <li><a href="events.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">所有活動</a></li>
-        <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">關於北回歸線</a></li>
-        <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] hover:scale-105 inline-block">關於青權陣線</a></li>
+        <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A]">主頁</a></li>
+        <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A]">最新新聞</a></li>
+        <li><a href="events.html" class="transition duration-200 hover:text-[#FFD95A]">所有活動</a></li>
+        <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A]">關於北回歸線</a></li>
       </ul>
     </div>
     <div>
       <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
       <ul class="space-y-2">
-        <li>
-          <span class="text-white">北回歸線：</span>
-          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">Instagram</a>、
-          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">Threads</a>、
-          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">Youtube</a>、
-          <a href="https://portaly.cc/tnmnews" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">傳送門</a>
-        </li>
-        <li>
-          <span class="text-white">青權陣線：</span>
-          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">Instagram</a>、
-          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">Threads</a>、
-          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">傳送門</a>
-        </li>
+        <li><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A]">北回歸線 IG</a></li>
+        <li><a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="hover:text-[#FFD95A]">青權陣線 IG</a></li>
       </ul>
     </div>
   </div>
-  <div class="text-center text-gray-400 text-xs mt-8">
-    聯絡方式<br>win9487947@gmail.com<br><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="hover:text-[#FFD95A] hover:scale-105 inline-block">或 北回歸線IG</a>
-  </div>
-  <div class="text-center text-gray-400 text-xs mt-8">
-    © 2025 北回歸線 TNMNEWS. 保留所有權利。
-  </div>
+  <div class="text-center text-gray-400 text-xs mt-8">© 2025 北回歸線 TNMNEWS. 保留所有權利。</div>
 </section>
 
-<!-- JS 載入活動資料 -->
 <script>
   fetch('events-index.json')
     .then(res => res.json())
@@ -120,20 +83,27 @@
       const container = document.getElementById('events-list');
       data.forEach(event => {
         const card = document.createElement('article');
-        card.className = 'p-6 border border-[#00C9A7] rounded shadow hover:shadow-lg transition';
+        card.className = 'bg-[#0B1C3D] border border-[#1A2F4D] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden';
+
+        // 檢查圖片是否存在
+        const thumbnailHTML = event.thumbnail 
+          ? `<img src="${event.thumbnail}" alt="${event.title}" class="w-full h-48 object-cover">`
+          : `<div class="w-full h-48 bg-[#1A2F4D] flex items-center justify-center text-gray-500 text-sm">TNMNEWS 目前尚無圖片</div>`;
 
         card.innerHTML = `
-          <h2 class="text-xl font-bold text-[#FFD95A] mb-2">${event.title}</h2>
-          <p class="text-sm text-gray-400 mb-2">${event.date}｜${event.organizer || 'TNMNEWS'}</p>
-          <p class="text-gray-200 mb-4">${event.summary}</p>
-          <a href="event.html?id=${event.id}" class="text-[#FFD95A] underline hover:scale-105 inline-block">活動詳情 →</a>
+          ${thumbnailHTML}
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-[#FFD95A] mb-2">${event.title}</h2>
+            <p class="text-xs text-gray-400 mb-2">${event.date} ｜ ${event.organizer || 'TNMNEWS'}</p>
+            <p class="text-gray-300 mb-4 text-sm line-clamp-3">${event.summary}</p>
+            <a href="event.html?id=${event.id}" class="text-[#00C9A7] font-semibold hover:text-[#FFD95A] transition">閱讀詳情 →</a>
+          </div>
         `;
-
         container.appendChild(card);
       });
     })
-    .catch(err => {
-      document.getElementById('events-list').innerHTML = '<p class="text-red-400">載入活動失敗，請稍後再試。</p>';
+    .catch(() => {
+      document.getElementById('events-list').innerHTML = '<p class="text-red-400 text-center col-span-full">目前暫無活動或載入失敗。</p>';
     });
 </script>
 
