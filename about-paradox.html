@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於破局者 Paradox｜北回歸線 TNMNEWS</title>
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/pdx-favicon-32x32.png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #050d1a;
+      color: #FFFFFF;
+      font-family: 'Noto Sans TC', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      letter-spacing: 0.06em; 
+    }
+    
+    .editorial-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+    .editorial-cjk {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 900;
+    }
+    
+    .geometric-grid {
+      background-image: linear-gradient(rgba(0, 201, 167, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 201, 167, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: center;
+    }
+
+    .paradox-gradient {
+      background: linear-gradient(135deg, #00C9A7, #0081CB, #FFD95A);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: paradoxMove 6s ease infinite;
+    }
+    @keyframes paradoxMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .float-slow {
+      animation: floatAnim 8s ease-in-out infinite alternate;
+    }
+    .spin-slow {
+      animation: spinAnim 25px linear infinite;
+      animation-duration: 20s;
+    }
+    @keyframes floatAnim {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-25px) rotate(5deg); }
+    }
+    @keyframes spinAnim {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .paradox-card {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .paradox-card::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: -8px;
+      bottom: -8px;
+      border: 1px solid rgba(0, 201, 167, 0.3);
+      border-radius: 0.75rem;
+      z-index: -1;
+      transition: all 0.4s ease;
+    }
+    .paradox-card:hover::before {
+      transform: translate(4px, 4px);
+      border-color: #FFD95A;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen geometric-grid relative">
+
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00C9A7] rounded-full blur-[120px] opacity-10 pointer-events-none float-slow"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#0081CB] rounded-full blur-[150px] opacity-10 pointer-events-none float-slow" style="animation-delay: -3s;"></div>
+
+  <nav class="bg-[#09152a] bg-opacity-80 backdrop-blur-lg p-4 fixed w-full top-0 z-50 border-b border-gray-800/50 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold paradox-gradient">北回歸線 TNMNEWS</a>
+      <ul class="flex gap-6 text-sm items-center">
+        <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400 hover:scale-105">主頁</a></li>
+        <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400 hover:scale-105">最新新聞</a></li>
+        <li><a href="events.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400">所有活動</a></li>
+        <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400 hover:scale-105">關於北回歸線</a></li>
+        <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400 hover:scale-105">關於青權陣線</a></li>
+        <li><a href="about-paradox.html" class="paradox-gradient font-bold transition inline-block scale-105">關於破局者</a></li>
+        <li><a href="links.html" class="transition duration-200 hover:text-[#FFD95A] inline-block text-gray-400 hover:scale-105">更多連結</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="flex-grow pt-36 pb-20 container mx-auto max-w-5xl px-6 relative z-10">
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+      
+      <div class="lg:col-span-5 flex justify-center relative py-10">
+        <div class="absolute w-52 h-52 border border-dashed border-gray-700 rounded-full spin-slow pointer-events-none"></div>
+        <div class="absolute w-64 h-64 border border-gray-800/30 rounded-full pointer-events-none"></div>
+        
+        <div class="relative z-10 group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-[#00C9A7] to-[#0081CB] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+          <img src="assets/pdx-logo-main.png" alt="破局者識別標誌" class="relative w-44 h-44 rounded-full border border-gray-700 bg-[#0B1C3D] shadow-2xl transition duration-500 transform group-hover:scale-105 object-cover">
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00C9A7]/30 bg-[#00C9A7]/10 text-[#00C9A7] text-xs font-semibold tracking-widest uppercase">
+          ✦ Paradigm Breaker
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+          <span class="editorial-title text-2xl md:text-3xl block font-light text-gray-400 mb-1">Project. Paradox</span>
+          <span class="editorial-cjk">拆解僵化體制的</span><br>
+          <span class="paradox-gradient editorial-cjk">系統性悖論。</span>
+        </h1>
+        
+        <p class="text-gray-400 text-sm md:text-base font-medium tracking-widest max-w-xl mx-auto lg:mx-0">
+          哲學思辨 ． 事件解構 ． 深度觀察 ． 權力批判 ． 工具理性
+        </p>
+        <p class="text-gray-300 text-sm md:text-base leading-relaxed text-justify font-light">
+          破局者 Paradox 是 TNMNEWS 旗下獨立倡議專案。我們不流於表面新聞的速食餵養，專注以社會學與形而上的批判視角，剝光既得利益者的前台偽裝，為受壓迫的個體主體性尋找突圍的奇異點。
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-28">
+      <div class="bg-[#112B4D]/40 border border-[#1A2F4D] rounded-2xl p-8 md:p-12 relative overflow-hidden group">
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 border border-[#00C9A7]/10 rounded-xl transform rotate-45 pointer-events-none transition group-hover:border-[#00C9A7]/20 duration-700"></div>
+        
+        <div class="max-w-3xl mx-auto space-y-6">
+          <h2 class="text-2xl font-bold text-[#FFD95A] border-b border-gray-800 pb-3 flex items-center gap-3 editorial-cjk tracking-wider">
+            <span class="w-2 h-6 bg-[#00C9A7] block rounded-sm"></span> 我們的宗旨
+          </h2>
+          <div class="text-gray-300 leading-relaxed space-y-6 text-justify text-sm md:text-base font-light">
+            <p>
+              當代的社會運作與工具理性，往往在明亮處佈置好了趨於完善的規訓常規，卻在暗處透過繁複的權力網格對弱者進行收編、馴化與封口。我們習慣於順從體制編織好的主流敘事，卻往往忽視了政策初衷與實務結果背道而馳的荒謬。
+            </p>
+            
+            <div class="transform -rotate-1 py-4 my-6 bg-[#051124] border-l-4 border-[#00C9A7] pl-6 pr-4 rounded-r shadow-inner">
+              <span class="text-xs uppercase tracking-widest text-gray-500 font-bold block mb-1">Core Axiom / 核心公理</span>
+              <p class="font-bold text-white tracking-wide text-base md:text-lg editorial-cjk">
+                「唯有看穿並曝露體制內的悖論（Paradox），常規的死局才有可能被解構。」
+              </p>
+            </div>
+            <p>
+              破局者 Paradox 拒絕無效的情緒咒罵。我們引入經典歷史文獻、左翼經濟思潮與嚴謹的結構分析。我們不只記錄矛盾，更要為全台青年與學生群體提供防身的數位思辨子彈，在精密被計算的理性社會中，重新奪回詮釋風險與主體思考的權利。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-center mb-16 space-y-2">
+        <h2 class="text-3xl font-bold text-white tracking-wide editorial-cjk">矩陣核心領域</h2>
+        <p class="text-gray-400 text-sm">立足形而上視角，解構當代工具理性下的四維盲區。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        
+        <div class="paradox-card bg-[#112B4D] border border-[#1A2F4D] rounded-xl p-8 hover:-translate-y-1 transition duration-300">
+          <div class="w-10 h-10 mb-6 rounded-lg bg-[#00C9A7]/10 border border-[#00C9A7]/30 flex justify-center items-center font-black text-[#00C9A7] text-sm font-mono">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-[#FFD95A] mb-3 tracking-wide editorial-cjk">工具理性與體制批判</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-justify font-light">
+            深度剖析現代科層官僚體制、行政僵化法規與政策盲區，專門指出其在實務運作上對個體產生的寒蟬效應與系統權力不對等。
+          </p>
+        </div>
+
+        <div class="paradox-card bg-[#112B4D] border border-[#1A2F4D] rounded-xl p-8 hover:-translate-y-1 transition duration-300">
+          <div class="w-10 h-10 mb-6 rounded-lg bg-[#FFD95A]/10 border border-[#FFD95A]/30 flex justify-center items-center font-black text-[#FFD95A] text-sm font-mono">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-[#00C9A7] mb-3 tracking-wide editorial-cjk">當代哲學與觀念科普</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-justify font-light">
+            轉化與解碼形而上的經典批判理論（如異化論、全景敞視主義），將艱澀的哲學大師思想解構為現代人皆能輕易理解的防身觀念。
+          </p>
+        </div>
+
+        <div class="paradox-card bg-[#112B4D] border border-[#1A2F4D] rounded-xl p-8 hover:-translate-y-1 transition duration-300">
+          <div class="w-10 h-10 mb-6 rounded-lg bg-[#FF6CAB]/10 border border-[#FF6CAB]/30 flex justify-center items-center font-black text-[#FF6CAB] text-sm font-mono">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-[#FFD95A] mb-3 tracking-wide editorial-cjk">校園治理與後台解構</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-justify font-light">
+            聚焦高等教育與大專院校體制，撕開制度體面與權力前台的民主偽裝，真實還原底層學生與潛在受害者所面連的結構性困境。
+          </p>
+        </div>
+
+        <div class="paradox-card bg-[#112B4D] border border-[#1A2F4D] rounded-xl p-8 hover:-translate-y-1 transition duration-300">
+          <div class="w-10 h-10 mb-6 rounded-lg bg-white/5 border border-white/20 flex justify-center items-center font-black text-white text-sm font-mono">
+            04
+          </div>
+          <h3 class="text-lg font-bold text-[#00C9A7] mb-3 tracking-wide editorial-cjk">深度專題報導</h3>
+          <p class="text-gray-400 text-sm leading-relaxed text-justify font-light">
+            拒絕碎片化的吸睛碎屑，透過長期追蹤、跨校文獻比對與實務匿名吹哨者訪談，產出具有思想厚度與高長期保存價值的解構報告。
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="mt-28 border-t border-gray-800 pt-20 text-center relative">
+      <div class="absolute -top-1/2 left-1/2 transform -translate-x-1/2 w-full h-full bg-[#0081CB] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+      
+      <div class="relative z-10">
+        <h3 class="text-xs uppercase tracking-[0.3em] text-gray-500 font-bold mb-10 font-mono">Matrix Architecture / 北回歸線TNM 獨立媒體矩陣架構</h3>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-xs font-mono">
+          <div class="px-6 py-3 rounded-lg border border-gray-800 bg-[#112B4D]/20 text-gray-400">青權陣線 YRF <span class="block text-[10px] text-gray-500 mt-0.5 font-sans">青年行動倡議</span></div>
+          <div class="text-gray-600 hidden md:block">◀</div>
+          <div class="px-8 py-4 rounded-xl border border-[#00C9A7]/40 bg-[#09152a] font-bold text-white shadow-xl relative text-sm tracking-wider">
+            <div class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-[#FFD95A] rounded-full animate-ping opacity-30"></div>
+            北回歸線 TNMNEWS <span class="block text-xs text-[#00C9A7] font-normal mt-1 font-sans">獨立青年媒體</span>
+          </div>
+          <div class="text-gray-600 hidden md:block">▶</div>
+          <div class="px-6 py-3 rounded-lg border border-[#00C9A7] bg-[#112B4D]/60 text-white font-semibold shadow-md">破局者 Paradox <span class="block text-[10px] text-[#FFD95A] font-normal mt-0.5 font-sans">思想深度解構</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#050d1a] py-12 px-6 border-t border-gray-900 z-10 relative">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-400">
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4 tracking-wider font-serif">// 網站導覽</h3>
+        <ul class="space-y-2 text-xs">
+          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">主頁</a></li>
+          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition inline-block">所有活動</a></li>
+          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於青權陣線</a></li>
+          <li><a href="about-paradox.html" class="text-white font-medium transition inline-block">關於破局者</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4 tracking-wider font-serif">// 社群媒體</h3>
+        <ul class="space-y-2 text-xs">
+          <li>
+            <span class="text-white">北回歸線：</span>
+            <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+            <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Youtube</a>
+          </li>
+          <li>
+            <span class="text-white">青權陣線：</span>
+            <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>
+          </li>
+                    <li>
+            <span class="text-white">破局者 Paradox：</span>
+            <a href="https://www.instagram.com/paradox.tw/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
+            <a href="https://www.threads.com/@paradox.tw" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-[#FFD95A] font-bold mb-4 tracking-wider font-serif">// 聯絡資訊</h3>
+        <p class="text-xs mb-2">聯絡信箱：win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] underline text-xs">透過官方 Instagram 聯絡</a></p>
+      </div>
+    </div>
+    <div class="text-center text-gray-600 text-xs mt-12 pt-4 border-t border-gray-900/50">
+      © 2026 北回歸線 TNMNEWS. 保留所有權利。
+      (該頁面由破局者 Paradox團隊獨立運營)
+  </footer>
+
+</body>
+</html>
