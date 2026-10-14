@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="TW-TW">
+<html lang="zh-TW">
 <head>
-  <meta TWarset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">更多連結｜北回歸線 TNMNEWS</title>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/tn-logo-32x32.png">
@@ -36,6 +36,7 @@
       font-size: 0.75rem;
       transition: all 0.2s ease;
       color: #9CA3AF;
+      cursor: pointer;
     }
     .lang-btn:hover {
       color: #FFFFFF;
@@ -68,11 +69,11 @@
 
         <!-- 語言切換按鈕 -->
         <div class="flex items-center bg-[#0B1C3D] p-1 rounded-lg border border-[#1A2F4D] shadow-inner">
-          <button onclick="setLanguage('TW')" id="btn-TW" class="lang-btn active">TW</button>
+          <button type="button" onclick="setLanguage('TW')" id="btn-TW" class="lang-btn active">TW</button>
           <span class="text-gray-600 text-xs">/</span>
-          <button onclick="setLanguage('jp')" id="btn-jp" class="lang-btn">JP</button>
+          <button type="button" onclick="setLanguage('jp')" id="btn-jp" class="lang-btn">JP</button>
           <span class="text-gray-600 text-xs">/</span>
-          <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+          <button type="button" onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
         </div>
       </div>
     </div>
@@ -210,10 +211,10 @@
         nav_links: "更多連結",
         header_title: "更多連結",
         header_sub: "歡迎透過以下官方渠道與跨語系社群平台，與我們的媒體合作矩陣取得聯繫",
-        yrf_badge: "校園權益與行動倡議 (TW)",
+        yrf_badge: "校園權益與行動倡議 (TW / EN)",
         yrf_title: "青權陣線 YRF",
         yrf_desc: "與《北回歸線 TNM》合作之青年倡議團隊，專注於校園權益、學生自治與教育現場的深耕行動。",
-        tnm_badge: "中立青年媒體總部 (TW / JP)",
+        tnm_badge: "中立青年媒體 (TW / JP)",
         tnm_title: "北回歸線 TNMNEWS",
         tnm_desc: "台灣青年主導的中立新聞媒體平台，聚焦學生權益、教育政策與社會公共議題之深度報導。",
         pdx_badge: "國際新聞傳播與解構 (EN / JP)",
@@ -242,10 +243,10 @@
         nav_links: "リンク集",
         header_title: "公式リンク集",
         header_sub: "以下の公式チャンネルおよび多言語SNSプラットフォームより、各メディア部門へアクセスできます",
-        yrf_badge: "キャンパス権利・行動 (TW)",
+        yrf_badge: "キャンパス権利・行動 (TW / EN)",
         yrf_title: "青権陣線 YRF",
         yrf_desc: "《北回帰線 TNM》と連携する青年アドボカシー部門。学生の権利、学園自治、教育現場の改革に特化した実践的アクションを展開。",
-        tnm_badge: "中立青年メディア総局 (TW / JP)",
+        tnm_badge: "中立青年メディア (TW / JP)",
         tnm_title: "北回帰線 TNMNEWS",
         tnm_desc: "台湾の若者が主導する中立系ニュースメディア。学生の権利、教育政策、社会問題に焦点を当てた報道を行っています。",
         pdx_badge: "国際報道・多言語解読 (EN / JP)",
@@ -272,12 +273,12 @@
         nav_about_yrf: "About YRF",
         nav_about_pdx: "About Paradox",
         nav_links: "Links",
-        header_title: "Official TWannels & Links",
-        header_sub: "Connect with our media matrix across our official platforms and multilingual social TWannels",
-        yrf_badge: "Campus Rights & Action (TW)",
+        header_title: "Official Channels & Links",
+        header_sub: "Connect with our media matrix across our official platforms and multilingual social channels",
+        yrf_badge: "Campus Rights & Action (TW / EN)",
         yrf_title: "Youth Rights Front (YRF)",
         yrf_desc: "An advocacy unit partnering with TNM, dedicated to grassroots action in campus democracy, student rights, and educational reform.",
-        tnm_badge: "Neutral Youth Media Hub (TW / JP)",
+        tnm_badge: "Neutral Youth Media (TW / JP)",
         tnm_title: "Tropic North Media (TNM)",
         tnm_desc: "A Taiwan-based neutral youth news platform focusing on student rights, educational policies, and in-depth public issue reporting.",
         pdx_badge: "Global News Decoding (EN / JP)",
@@ -286,7 +287,7 @@
         btn_portal: "Portaly Hub",
         btn_portal_short: "Portaly",
         footer_nav: "Navigation",
-        footer_social: "Social TWannels",
+        footer_social: "Social Channels",
         footer_tnm_label: "TNM: ",
         footer_yrf_label: "YRF: ",
         footer_contact: "Contact Us",
@@ -297,23 +298,25 @@
     };
 
     function setLanguage(lang) {
-      document.documentElement.lang = lang === 'jp' ? 'ja' : (lang === 'en' ? 'en' : 'TW-TW');
+      document.documentElement.lang = lang === 'jp' ? 'ja' : (lang === 'en' ? 'en' : 'zh-TW');
       document.getElementById('page-title').textContent = translations[lang].title;
 
       const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEaTW(el => {
+      elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
+        if (translations[lang] && translations[lang][key]) {
           el.textContent = translations[lang][key];
         }
       });
 
-      ['TW', 'jp', 'en'].forEaTW(l => {
+      ['TW', 'jp', 'en'].forEach(l => {
         const btn = document.getElementById('btn-' + l);
-        if (l === lang) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
+        if (btn) {
+          if (l === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
         }
       });
     }
