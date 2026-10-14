@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="TW-TW">
 <head>
-  <meta charset="UTF-8" />
+  <meta TWarset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>更多連結｜北回歸線 TNMNEWS</title>
+  <title id="page-title">更多連結｜北回歸線 TNMNEWS</title>
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/tn-logo-32x32.png">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- 升級 Tailwind CSS 以完整支援自訂 Hex 色碼 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #0B1C3D;
       color: #FFFFFF;
-      font-family: 'Noto Sans TC', sans-serif;
+      font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
       scroll-behavior: smooth;
     }
     .gradient-text {
@@ -26,76 +28,119 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    /* 語言切換按鈕樣式 */
+    .lang-btn {
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.375rem;
+      font-family: monospace;
+      font-size: 0.75rem;
+      transition: all 0.2s ease;
+      color: #9CA3AF;
+    }
+    .lang-btn:hover {
+      color: #FFFFFF;
+    }
+    .lang-btn.active {
+      background-color: rgba(0, 201, 167, 0.2);
+      color: #00C9A7;
+      border: 1px solid rgba(0, 201, 167, 0.4);
+      font-weight: 700;
+    }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
-  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold gradient-text">北回歸線 TNMNEWS</a>
-      <ul class="flex gap-6 text-sm items-center text-white">
-        <li><a href="index.html" class="hover:text-[#FFD95A] transition">主頁</a></li>
-        <li><a href="news.html" class="hover:text-[#FFD95A] transition">最新新聞</a></li>
-        <li><a href="events.html" class="hover:text-[#FFD95A] transition">所有活動</a></li>
-        <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition">關於北回歸線</a></li>
-        <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition">關於青權陣線</a></li>
-        <li><a href="about-paradox.html" class="hover:text-[#FFD95A] transition">關於破局者</a></li>
-        <li><a href="links.html" class="gradient-text font-bold transition">更多連結</a></li>
-      </ul>
+
+  <!-- 頂部導覽列（含右上角 TW/JP/EN 語言切換器） -->
+  <nav class="bg-[#112B4D] bg-opacity-90 backdrop-blur-lg p-4 fixed w-full top-0 z-50 shadow border-b border-[#1A2F4D]">
+    <div class="container mx-auto flex flex-wrap justify-between items-center gap-4">
+      <a href="index.html" class="text-2xl font-bold gradient-text" data-i18n="nav_brand">北回歸線 TNMNEWS</a>
+      
+      <div class="flex items-center gap-6">
+        <ul class="hidden md:flex gap-6 text-sm items-center text-white">
+          <li><a href="index.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_home">主頁</a></li>
+          <li><a href="news.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_news">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_events">所有活動</a></li>
+          <li><a href="about-tnm.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_about_tnm">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_about_yrf">關於青權陣線</a></li>
+          <li><a href="about-paradox.html" class="hover:text-[#FFD95A] transition" data-i18n="nav_about_pdx">關於破局者</a></li>
+          <li><a href="links.html" class="gradient-text font-bold transition" data-i18n="nav_links">更多連結</a></li>
+        </ul>
+
+        <!-- 語言切換按鈕 -->
+        <div class="flex items-center bg-[#0B1C3D] p-1 rounded-lg border border-[#1A2F4D] shadow-inner">
+          <button onclick="setLanguage('TW')" id="btn-TW" class="lang-btn active">TW</button>
+          <span class="text-gray-600 text-xs">/</span>
+          <button onclick="setLanguage('jp')" id="btn-jp" class="lang-btn">JP</button>
+          <span class="text-gray-600 text-xs">/</span>
+          <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <main class="flex-grow pt-32 pb-16 px-6">
     <header class="text-center mb-12">
-      <h1 class="text-3xl md:text-4xl font-black gradient-text mb-2">更多連結</h1>
-      <p class="text-gray-400 text-xs md:text-sm">歡迎透過以下官方渠道與社群平台與我們取得聯繫</p>
+      <h1 class="text-3xl md:text-4xl font-black gradient-text mb-3" data-i18n="header_title">更多連結</h1>
+      <p class="text-gray-400 text-xs md:text-sm" data-i18n="header_sub">歡迎透過以下官方渠道與跨語系社群平台，與我們的媒體合作矩陣取得聯繫</p>
     </header>
 
     <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
 
-
-
+      <!-- 青權陣線 YRF -->
       <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-50 border border-[#1A2F4D] shadow-lg text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300">
         <div>
+          <span class="inline-block px-3 py-1 mb-4 text-[11px] font-semibold tracking-wider text-[#FFD95A] bg-[#FFD95A]/10 border border-[#FFD95A]/30 rounded-full" data-i18n="yrf_badge">
+            校園權益與行動倡議 (TW / EN)
+          </span>
           <img src="assets/yrf-logo.png" alt="青權陣線 Logo" class="mx-auto w-24 h-24 mb-4 object-contain rounded-full">
-          <h2 class="text-2xl font-bold text-[#FFD95A] mb-4">青權陣線 YRF</h2>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2">
-            青年公共參與與世代倡議平台，推動民主與教育改革。
+          <h2 class="text-2xl font-bold text-[#FFD95A] mb-3" data-i18n="yrf_title">青權陣線 YRF</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2" data-i18n="yrf_desc">
+            與《北回歸線 TNM》合作之青年倡議團隊，專注於校園權益、學生自治與教育現場的深耕行動。
           </p>
         </div>
         <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
-          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">Instagram</a>
-          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">Threads</a>
-          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#FFD95A] transition duration-200 shadow-sm text-sm">傳送門</a>
+          <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Instagram</a>
+          <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Threads</a>
+          <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="w-full py-2.5 rounded-lg bg-[#FFD95A] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm" data-i18n="btn_portal">傳送門 Portaly</a>
         </div>
       </div>
 
-      <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-50 border border-[#1A2F4D] shadow-lg text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300">
+      <!-- 北回歸線 TNMNEWS -->
+      <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-70 border border-[#00C9A7]/40 shadow-xl text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300 relative">
         <div>
+          <span class="inline-block px-3 py-1 mb-4 text-[11px] font-semibold tracking-wider text-[#00C9A7] bg-[#00C9A7]/10 border border-[#00C9A7]/30 rounded-full" data-i18n="tnm_badge">
+            中立青年媒體 (TW / JP)
+          </span>
           <img src="assets/tnm-logo.png" alt="北回歸線 Logo" class="mx-auto w-24 h-24 mb-4 object-contain">
-          <h2 class="text-2xl font-bold text-[#00C9A7] mb-4">北回歸線 TNMNEWS</h2>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2">
-            青年主導的新聞媒體平台，聚焦學生權益、教育政策與社會議題。
+          <h2 class="text-2xl font-bold text-[#00C9A7] mb-3" data-i18n="tnm_title">北回歸線 TNMNEWS</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2" data-i18n="tnm_desc">
+            台灣青年主導的中立新聞媒體平台，聚焦學生權益、教育政策與社會公共議題之深度報導。
           </p>
         </div>
         <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
-          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">Instagram</a>
-          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">Threads</a>
-          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">YouTube</a>
-          <a href="https://portaly.cc/tnmnews" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#00C9A7] transition duration-200 shadow-sm text-sm">傳送門</a>
+          <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Instagram</a>
+          <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Threads</a>
+          <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">YouTube</a>
+          <a href="https://portaly.cc/tnmnews" target="_blank" class="w-full py-2.5 rounded-lg bg-[#00C9A7] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm" data-i18n="btn_portal">傳送門 Portaly</a>
         </div>
       </div>
 
+      <!-- 破局者 Paradox -->
       <div class="p-8 rounded-2xl bg-[#112B4D] bg-opacity-50 border border-[#1A2F4D] shadow-lg text-center flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-2xl duration-300">
         <div>
+          <span class="inline-block px-3 py-1 mb-4 text-[11px] font-semibold tracking-wider text-[#87cfb3] bg-[#87cfb3]/10 border border-[#87cfb3]/30 rounded-full" data-i18n="pdx_badge">
+            國際新聞傳播與解構 (EN / JP)
+          </span>
           <img src="assets/pdx-logo-main.png" alt="破局者 Logo" class="mx-auto w-24 h-24 mb-4 object-cover rounded-full border border-gray-700/30 bg-[#0B1C3D]">
-          <h2 class="text-2xl font-bold text-[#87cfb3] mb-4">破局者 Paradox</h2>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2">
-            獨立思想與社會哲學倡議平台，專注於體制解構、工具理性批判與深度事件剖析。
+          <h2 class="text-2xl font-bold text-[#87cfb3] mb-3" data-i18n="pdx_title">破局者 Paradox</h2>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6 px-2" data-i18n="pdx_desc">
+            與《北回歸線 TNM》合作之國際傳播單位。秉持事件解構、深度觀察、權力批判與工具理性，以英日雙語將台灣新聞推向國際。
           </p>
         </div>
         <div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
-          <a href="https://www.instagram.com/paradox.tw/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#87cfb3] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#87cfb3] transition duration-200 shadow-sm text-sm">Instagram</a>
-          <a href="https://www.threads.com/@paradox.tw" target="_blank" class="w-full py-2.5 rounded-lg bg-[#87cfb3] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#87cfb3] transition duration-200 shadow-sm text-sm">Threads</a>
+          <a href="https://x.com/ParadoxAsia" target="_blank" class="w-full py-2.5 rounded-lg bg-[#87cfb3] text-[#0B1C3D] font-bold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">X (@ParadoxAsia)</a>
+          <a href="https://www.instagram.com/paradox.tw/" target="_blank" class="w-full py-2.5 rounded-lg bg-[#87cfb3] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Instagram</a>
+          <a href="https://www.threads.com/@paradox.tw" target="_blank" class="w-full py-2.5 rounded-lg bg-[#87cfb3] text-[#0B1C3D] font-semibold hover:bg-white hover:text-[#0B1C3D] transition duration-200 shadow-sm text-sm">Threads</a>
         </div>
       </div>
 
@@ -105,49 +150,173 @@
   <footer class="bg-[#0B1C3D] py-12 px-6 border-t border-[#1A2F4D]">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-300">
       <div>
-        <h3 class="text-[#FFD95A] font-bold mb-4">網站導覽</h3>
+        <h3 class="text-[#FFD95A] font-bold mb-4" data-i18n="footer_nav">網站導覽</h3>
         <ul class="space-y-2">
-          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">主頁</a></li>
-          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">最新新聞</a></li>
-          <li><a href="events.html" class="hover:text-[#FFD95A] transition inline-block">所有活動</a></li>
-          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於北回歸線</a></li>
-          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block">關於青權陣線</a></li>
-          <li><a href="about-paradox.html" class="hover:text-[#FFD95A] transition">關於破局者</a></li>
+          <li><a href="index.html" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="nav_home">主頁</a></li>
+          <li><a href="news.html" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="nav_news">最新新聞</a></li>
+          <li><a href="events.html" class="hover:text-[#FFD95A] transition inline-block" data-i18n="nav_events">所有活動</a></li>
+          <li><a href="about-tnm.html" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="nav_about_tnm">關於北回歸線</a></li>
+          <li><a href="about-youthfront.html" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="nav_about_yrf">關於青權陣線</a></li>
+          <li><a href="about-paradox.html" class="hover:text-[#FFD95A] transition inline-block" data-i18n="nav_about_pdx">關於破局者</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="text-[#FFD95A] font-bold mb-4">社群媒體</h3>
+        <h3 class="text-[#FFD95A] font-bold mb-4" data-i18n="footer_social">社群媒體</h3>
         <ul class="space-y-2">
           <li>
-            <span class="text-white">北回歸線：</span>
+            <span class="text-white" data-i18n="footer_tnm_label">北回歸線：</span>
             <a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
             <a href="https://www.threads.com/@tnmnews_org" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
             <a href="https://www.youtube.com/@TaiwanTropicNorthMedia" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Youtube</a>、
-            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+            <a href="https://portaly.cc/tnmnews" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="btn_portal_short">傳送門</a>
           </li>
           <li>
-            <span class="text-white">青權陣線：</span>
+            <span class="text-white" data-i18n="footer_yrf_label">青權陣線：</span>
             <a href="https://www.instagram.com/yrf_taiwan/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
             <a href="https://www.threads.com/@yrf_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>、
-            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">傳送門</a>
+            <a href="https://portaly.cc/YRF_taiwan" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block" data-i18n="btn_portal_short">傳送門</a>
           </li>
           <li>
             <span class="text-white">破局者 Paradox：</span>
+            <a href="https://x.com/ParadoxAsia" target="_blank" class="transition duration-200 hover:text-[#00C9A7] font-semibold inline-block">X (@ParadoxAsia)</a>、
             <a href="https://www.instagram.com/paradox.tw/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Instagram</a>、
             <a href="https://www.threads.com/@paradox.tw" target="_blank" class="transition duration-200 hover:text-[#FFD95A] inline-block">Threads</a>
           </li>
         </ul>
       </div>
       <div>
-        <h3 class="text-[#FFD95A] font-bold mb-4">聯絡資訊</h3>
-        <p class="mb-2">聯絡信箱：win9487947@gmail.com</p>
-        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] underline">透過官方 Instagram 聯絡</a></p>
+        <h3 class="text-[#FFD95A] font-bold mb-4" data-i18n="footer_contact">聯絡資訊</h3>
+        <p class="mb-2"><span data-i18n="footer_email">聯絡信箱：</span>win9487947@gmail.com</p>
+        <p><a href="https://www.instagram.com/tnmnews_org/" target="_blank" class="transition duration-200 hover:text-[#FFD95A] underline" data-i18n="footer_ig_contact">透過官方 Instagram 聯絡</a></p>
       </div>
     </div>
-    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]">
+    <div class="text-center text-gray-500 text-xs mt-12 pt-4 border-t border-[#1A2F4D]" data-i18n="footer_copy">
       © 2026 北回歸線 TNMNEWS. 保留所有權利。
     </div>
   </footer>
 
+  <!-- 三語切換腳本 (TW / JP / EN) -->
+  <script>
+    const translations = {
+      TW: {
+        title: "更多連結｜北回歸線 TNMNEWS",
+        nav_brand: "北回歸線 TNMNEWS",
+        nav_home: "主頁",
+        nav_news: "最新新聞",
+        nav_events: "所有活動",
+        nav_about_tnm: "關於北回歸線",
+        nav_about_yrf: "關於青權陣線",
+        nav_about_pdx: "關於破局者",
+        nav_links: "更多連結",
+        header_title: "更多連結",
+        header_sub: "歡迎透過以下官方渠道與跨語系社群平台，與我們的媒體合作矩陣取得聯繫",
+        yrf_badge: "校園權益與行動倡議 (TW)",
+        yrf_title: "青權陣線 YRF",
+        yrf_desc: "與《北回歸線 TNM》合作之青年倡議團隊，專注於校園權益、學生自治與教育現場的深耕行動。",
+        tnm_badge: "中立青年媒體總部 (TW / JP)",
+        tnm_title: "北回歸線 TNMNEWS",
+        tnm_desc: "台灣青年主導的中立新聞媒體平台，聚焦學生權益、教育政策與社會公共議題之深度報導。",
+        pdx_badge: "國際新聞傳播與解構 (EN / JP)",
+        pdx_title: "破局者 Paradox",
+        pdx_desc: "與《北回歸線 TNM》合作之國際傳播單位。秉持事件解構、深度觀察、權力批判與工具理性，以英日雙語將台灣新聞推向國際。",
+        btn_portal: "傳送門 Portaly",
+        btn_portal_short: "傳送門",
+        footer_nav: "網站導覽",
+        footer_social: "社群媒體",
+        footer_tnm_label: "北回歸線：",
+        footer_yrf_label: "青權陣線：",
+        footer_contact: "聯絡資訊",
+        footer_email: "聯絡信箱：",
+        footer_ig_contact: "透過官方 Instagram 聯絡",
+        footer_copy: "© 2026 北回歸線 TNMNEWS. 保留所有權利。"
+      },
+      jp: {
+        title: "リンク集｜北回帰線 TNMNEWS",
+        nav_brand: "北回帰線 TNMNEWS",
+        nav_home: "ホーム",
+        nav_news: "最新ニュース",
+        nav_events: "イベント",
+        nav_about_tnm: "北回帰線とは",
+        nav_about_yrf: "青権陣線とは",
+        nav_about_pdx: "破局者とは",
+        nav_links: "リンク集",
+        header_title: "公式リンク集",
+        header_sub: "以下の公式チャンネルおよび多言語SNSプラットフォームより、各メディア部門へアクセスできます",
+        yrf_badge: "キャンパス権利・行動 (TW)",
+        yrf_title: "青権陣線 YRF",
+        yrf_desc: "《北回帰線 TNM》と連携する青年アドボカシー部門。学生の権利、学園自治、教育現場の改革に特化した実践的アクションを展開。",
+        tnm_badge: "中立青年メディア総局 (TW / JP)",
+        tnm_title: "北回帰線 TNMNEWS",
+        tnm_desc: "台湾の若者が主導する中立系ニュースメディア。学生の権利、教育政策、社会問題に焦点を当てた報道を行っています。",
+        pdx_badge: "国際報道・多言語解読 (EN / JP)",
+        pdx_title: "破局者 Paradox",
+        pdx_desc: "《北回帰線 TNM》と提携する国際発信ユニット。事象の脱構築・深層観察・権力批判・道具的理性を掲げ、台湾のニュースを英語と日本語で世界へ発信。",
+        btn_portal: "ポータル Portaly",
+        btn_portal_short: "ポータル",
+        footer_nav: "サイトマップ",
+        footer_social: "ソーシャルメディア",
+        footer_tnm_label: "北回帰線：",
+        footer_yrf_label: "青権陣線：",
+        footer_contact: "お問い合わせ",
+        footer_email: "メール：",
+        footer_ig_contact: "公式 Instagram から連絡する",
+        footer_copy: "© 2026 北回帰線 TNMNEWS. All Rights Reserved."
+      },
+      en: {
+        title: "Official Links | Tropic North Media TNMNEWS",
+        nav_brand: "Tropic North Media TNM",
+        nav_home: "Home",
+        nav_news: "Latest News",
+        nav_events: "Events",
+        nav_about_tnm: "About TNM",
+        nav_about_yrf: "About YRF",
+        nav_about_pdx: "About Paradox",
+        nav_links: "Links",
+        header_title: "Official TWannels & Links",
+        header_sub: "Connect with our media matrix across our official platforms and multilingual social TWannels",
+        yrf_badge: "Campus Rights & Action (TW)",
+        yrf_title: "Youth Rights Front (YRF)",
+        yrf_desc: "An advocacy unit partnering with TNM, dedicated to grassroots action in campus democracy, student rights, and educational reform.",
+        tnm_badge: "Neutral Youth Media Hub (TW / JP)",
+        tnm_title: "Tropic North Media (TNM)",
+        tnm_desc: "A Taiwan-based neutral youth news platform focusing on student rights, educational policies, and in-depth public issue reporting.",
+        pdx_badge: "Global News Decoding (EN / JP)",
+        pdx_title: "Paradox (@ParadoxAsia)",
+        pdx_desc: "International broadcasting unit in partnership with TNM. Driven by event deconstruction, critique of power, and instrumental rationality to broadcast Taiwan's reality in EN & JP.",
+        btn_portal: "Portaly Hub",
+        btn_portal_short: "Portaly",
+        footer_nav: "Navigation",
+        footer_social: "Social TWannels",
+        footer_tnm_label: "TNM: ",
+        footer_yrf_label: "YRF: ",
+        footer_contact: "Contact Us",
+        footer_email: "Email: ",
+        footer_ig_contact: "Contact via Official Instagram",
+        footer_copy: "© 2026 Tropic North Media TNMNEWS. All Rights Reserved."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang === 'jp' ? 'ja' : (lang === 'en' ? 'en' : 'TW-TW');
+      document.getElementById('page-title').textContent = translations[lang].title;
+
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEaTW(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      ['TW', 'jp', 'en'].forEaTW(l => {
+        const btn = document.getElementById('btn-' + l);
+        if (l === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
